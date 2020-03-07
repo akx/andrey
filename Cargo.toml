@@ -1,0 +1,16 @@
+[package]
+name = "andrey"
+version = "0.1.0"
+authors = ["Aarni Koskela <akx@iki.fi>"]
+edition = "2018"
+
+[lib]
+name = "andrey"
+path = "src/lib.rs"
+
+[[bin]]
+name = "andrey"
+path = "src/bin/main.rs"
+
+[dependencies]
+rand = "0.7.3"
