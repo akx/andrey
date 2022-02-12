@@ -13,14 +13,14 @@ fn sample_forever(
     pick_random_key: bool,
 ) {
     let mut rng = rand::thread_rng();
-    let mut head = pick_key(&mut rng, &map).to_owned();
+    let mut head = pick_key(&mut rng, map).to_owned();
     let mut count: u32 = 0;
     loop {
         // if we reach a state where the current head is not in the map, start a new line
         if (max_len > 0 && count > max_len) || !map.contains_key(&head) {
             while !map.contains_key(&head) {
                 head = if pick_random_key {
-                    pick_key(&mut rng, &map).to_owned()
+                    pick_key(&mut rng, map).to_owned()
                 } else {
                     "".to_owned()
                 };
@@ -43,7 +43,8 @@ fn sample_forever(
 }
 
 fn main() {
-    let matches = clap_app!(myapp =>
+    let matches = clap_app!(app =>
+        (name: crate_name!())
         (version: crate_version!())
         (author: crate_authors!())
         (@arg state_size: -s +takes_value +required "State size")

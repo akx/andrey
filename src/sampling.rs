@@ -7,7 +7,7 @@ const EPSILON: f32 = 0.0001f32;
 
 pub fn pick_key<'a, TK, TV>(rng: &mut ThreadRng, map: &'a HashMap<TK, TV>) -> &'a TK {
     let mut keys = map.keys();
-    let idx = rng.gen_range(0, keys.len());
+    let idx = rng.gen_range(0..keys.len());
     keys.nth(idx).unwrap()
 }
 
